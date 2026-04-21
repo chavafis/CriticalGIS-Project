@@ -22,4 +22,7 @@ Based on historical records and population data from the late 19th and early 20t
 5. **Smyrna (Izmir), Turkey** - Featured a substantial Jewish community, particularly Sephardic Jews, contributing to the city's multicultural fabric.
 
 ## Interactive Map
-Explore the major port cities of the Mediterranean between 1800 and 1930 through an interactive map visualization. Click [here](index.html) to open the map and view the locations of key maritime hubs from this historical period.
+Explore the major port cities of the Mediterranean between 1800 and 1930 through an interactive map visualization. 
+
+- **View online**: [GitHub Pages](https://chavafis.github.io/CriticalGIS-Project/)
+- **View locally**: Download and open [index.html](index.html) in your browser

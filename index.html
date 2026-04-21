@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Port Cities of the Mediterranean (1800-1930)</title>
+    <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        .info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h2>Major Port Cities of the Mediterranean (1800-1930)</h2>
+        <p>This map shows key port cities that were significant for trade, commerce, and maritime activities in the Mediterranean region during the 19th and early 20th centuries.</p>
+    </div>
+    <div id="map"></div>
+
+    <script>
+        const map = new maplibregl.Map({
+            container: 'map',
+            style: 'https://demotiles.maplibre.org/style.json', // Open-source style
+            center: [15, 35], // Center on Mediterranean
+            zoom: 5
+        });
+
+        // List of major port cities with coordinates
+        const cities = [
+            { name: 'Marseille', country: 'France', lng: 5.3698, lat: 43.2965 },
+            { name: 'Barcelona', country: 'Spain', lng: 2.1734, lat: 41.3851 },
+            { name: 'Genoa', country: 'Italy', lng: 8.9463, lat: 44.4056 },
+            { name: 'Venice', country: 'Italy', lng: 12.3155, lat: 45.4408 },
+            { name: 'Naples', country: 'Italy', lng: 14.2681, lat: 40.8518 },
+            { name: 'Istanbul', country: 'Turkey', lng: 28.9784, lat: 41.0082 },
+            { name: 'Alexandria', country: 'Egypt', lng: 29.9187, lat: 31.2001 },
+            { name: 'Beirut', country: 'Lebanon', lng: 35.5018, lat: 33.8938 },
+            { name: 'Haifa', country: 'Palestine', lng: 34.9896, lat: 32.7940 },
+            { name: 'Thessaloniki', country: 'Greece', lng: 22.9444, lat: 40.6401 },
+            { name: 'Smyrna (Izmir)', country: 'Turkey', lng: 27.1384, lat: 38.4237 },
+            { name: 'Tunis', country: 'Tunisia', lng: 10.1658, lat: 36.8065 },
+            { name: 'Algiers', country: 'Algeria', lng: 3.0588, lat: 36.7538 },
+            { name: 'Tripoli', country: 'Libya', lng: 13.1875, lat: 32.8872 },
+            { name: 'Valletta', country: 'Malta', lng: 14.5146, lat: 35.8989 },
+            { name: 'Piraeus', country: 'Greece', lng: 23.6426, lat: 37.9420 },
+            { name: 'Palermo', country: 'Italy', lng: 13.3615, lat: 38.1157 },
+            { name: 'Cagliari', country: 'Italy', lng: 9.1217, lat: 39.2238 },
+            { name: 'Tangier', country: 'Morocco', lng: -5.8300, lat: 35.7595 },
+            { name: 'Gibraltar', country: 'United Kingdom', lng: -5.3453, lat: 36.1408 }
+        ];
+
+        // Add markers for each city
+        cities.forEach(city => {
+            const marker = new maplibregl.Marker()
+                .setLngLat([city.lng, city.lat])
+                .setPopup(new maplibregl.Popup().setHTML(`<h3>${city.name}</h3><p>${city.country}</p>`))
+                .addTo(map);
+        });
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">/Users/valentinafisicaro/Desktop/Workspace/CriticalGIS-Project/index.html

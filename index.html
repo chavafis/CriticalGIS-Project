@@ -1,72 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Major Port Cities of the Mediterranean (1800-1930)</title>
-    <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
-    <link href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css" rel="stylesheet" />
-    <style>
-        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-        .info {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 1;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Critical GIS Project · Mediterranean Port Cities</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
 </head>
 <body>
-    <div class="info">
-        <h2>Major Port Cities of the Mediterranean (1800-1930)</h2>
-        <p>This map shows key port cities that were significant for trade, commerce, and maritime activities in the Mediterranean region during the 19th and early 20th centuries.</p>
-    </div>
-    <div id="map"></div>
+  <header class="site-header">
+    <p class="eyebrow">Visual essay template</p>
+    <h1 class="brand">Critical GIS Project</h1>
+    <p class="lede">An interactive Mediterranean map of major port cities from 1800 to 1930, paired with historical Jewish population estimates and a navigation-style page structure.</p>
+    <nav class="toc" aria-label="Page sections">
+      <a href="#about">About</a>
+      <a href="#map">Map</a>
+      <a href="#cities">Data</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </header>
 
-    <script>
-        const map = new maplibregl.Map({
-            container: 'map',
-            style: 'https://demotiles.maplibre.org/style.json', // Open-source style
-            center: [15, 35], // Center on Mediterranean
-            zoom: 5
-        });
+  <main>
+    <section id="about" class="section">
+      <h2>About this site</h2>
+      <p>This repository now uses a visual-essay style inspired by a modern long-form web template. It combines narrative structure with an interactive map, a clickable city list, and historical population estimates for Jewish communities in Mediterranean port cities.</p>
+      <p>The map and list are designed to work together: click any city in the list to fly to that location on the map and reveal the population details.</p>
+    </section>
 
-        // List of major port cities with coordinates
-        const cities = [
-            { name: 'Marseille', country: 'France', lng: 5.3698, lat: 43.2965 },
-            { name: 'Barcelona', country: 'Spain', lng: 2.1734, lat: 41.3851 },
-            { name: 'Genoa', country: 'Italy', lng: 8.9463, lat: 44.4056 },
-            { name: 'Venice', country: 'Italy', lng: 12.3155, lat: 45.4408 },
-            { name: 'Naples', country: 'Italy', lng: 14.2681, lat: 40.8518 },
-            { name: 'Istanbul', country: 'Turkey', lng: 28.9784, lat: 41.0082 },
-            { name: 'Alexandria', country: 'Egypt', lng: 29.9187, lat: 31.2001 },
-            { name: 'Beirut', country: 'Lebanon', lng: 35.5018, lat: 33.8938 },
-            { name: 'Haifa', country: 'Palestine', lng: 34.9896, lat: 32.7940 },
-            { name: 'Thessaloniki', country: 'Greece', lng: 22.9444, lat: 40.6401 },
-            { name: 'Smyrna (Izmir)', country: 'Turkey', lng: 27.1384, lat: 38.4237 },
-            { name: 'Tunis', country: 'Tunisia', lng: 10.1658, lat: 36.8065 },
-            { name: 'Algiers', country: 'Algeria', lng: 3.0588, lat: 36.7538 },
-            { name: 'Tripoli', country: 'Libya', lng: 13.1875, lat: 32.8872 },
-            { name: 'Valletta', country: 'Malta', lng: 14.5146, lat: 35.8989 },
-            { name: 'Piraeus', country: 'Greece', lng: 23.6426, lat: 37.9420 },
-            { name: 'Palermo', country: 'Italy', lng: 13.3615, lat: 38.1157 },
-            { name: 'Cagliari', country: 'Italy', lng: 9.1217, lat: 39.2238 },
-            { name: 'Tangier', country: 'Morocco', lng: -5.8300, lat: 35.7595 },
-            { name: 'Gibraltar', country: 'United Kingdom', lng: -5.3453, lat: 36.1408 }
-        ];
+    <section id="map" class="section section-split">
+      <div class="map-panel">
+        <div id="map"></div>
+      </div>
+      <aside class="side-panel">
+        <div class="panel-inner">
+          <h3>Interactive city list</h3>
+          <p>Tap any city to center the map and open its popup. The estimates are drawn from historical population data for the late 19th and early 20th centuries.</p>
+          <ul id="city-list" class="city-list"></ul>
+        </div>
+      </aside>
+    </section>
 
-        // Add markers for each city
-        cities.forEach(city => {
-            const marker = new maplibregl.Marker()
-                .setLngLat([city.lng, city.lat])
-                .setPopup(new maplibregl.Popup().setHTML(`<h3>${city.name}</h3><p>${city.country}</p>`))
-                .addTo(map);
-        });
-    </script>
+    <section id="cities" class="section">
+      <h2>Jewish population estimates, 1890–1930</h2>
+      <p>The table below lists the major Mediterranean port cities displayed on the map, with approximate Jewish population counts at the height of each community during the historical period covered.</p>
+      <table class="stats-table">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Country</th>
+            <th>Estimate</th>
+            <th>Period</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </section>
+
+    <section id="sources" class="section">
+      <h2>Sources and notes</h2>
+      <p>The numbers on this page are approximate historical estimates. They are intended to illustrate relative community size rather than provide exact census figures.</p>
+      <p>City coordinates are plotted using MapLibre GL JS, with each city clickable from both the map and the adjacent interactive list.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Critical GIS Project · Mediterranean port cities · 1800–1930</p>
+  </footer>
+
+  <script>
+    const cities = [
+      { name: 'Thessaloniki', country: 'Greece', lng: 22.9444, lat: 40.6401, population: '≈ 80,000', period: 'c. 1910' },
+      { name: 'Istanbul', country: 'Turkey', lng: 28.9784, lat: 41.0082, population: '≈ 45,000', period: 'c. 1910' },
+      { name: 'Smyrna (Izmir)', country: 'Turkey', lng: 27.1384, lat: 38.4237, population: '≈ 30,000', period: 'c. 1910' },
+      { name: 'Marseille', country: 'France', lng: 5.3698, lat: 43.2965, population: '≈ 30,000', period: 'c. 1910' },
+      { name: 'Alexandria', country: 'Egypt', lng: 29.9187, lat: 31.2001, population: '≈ 22,000', period: 'c. 1920' },
+      { name: 'Tunis', country: 'Tunisia', lng: 10.1658, lat: 36.8065, population: '≈ 11,000', period: 'c. 1910' },
+      { name: 'Tangier', country: 'Morocco', lng: -5.8300, lat: 35.7595, population: '≈ 7,500', period: 'c. 1920' },
+      { name: 'Algiers', country: 'Algeria', lng: 3.0588, lat: 36.7538, population: '≈ 5,000', period: 'c. 1910' },
+      { name: 'Piraeus', country: 'Greece', lng: 23.6426, lat: 37.9420, population: '≈ 5,000', period: 'c. 1920' },
+      { name: 'Barcelona', country: 'Spain', lng: 2.1734, lat: 41.3851, population: '≈ 4,000', period: 'c. 1910' },
+      { name: 'Beirut', country: 'Lebanon', lng: 35.5018, lat: 33.8938, population: '≈ 3,500', period: 'c. 1910' },
+      { name: 'Valletta', country: 'Malta', lng: 14.5146, lat: 35.8989, population: '≈ 2,000', period: 'c. 1910' },
+      { name: 'Tripoli', country: 'Libya', lng: 13.1875, lat: 32.8872, population: '≈ 2,300', period: 'c. 1910' },
+      { name: 'Palermo', country: 'Italy', lng: 13.3615, lat: 38.1157, population: '≈ 1,800', period: 'c. 1910' },
+      { name: 'Genoa', country: 'Italy', lng: 8.9463, lat: 44.4056, population: '≈ 2,000', period: 'c. 1910' },
+      { name: 'Naples', country: 'Italy', lng: 14.2681, lat: 40.8518, population: '≈ 1,500', period: 'c. 1910' },
+      { name: 'Gibraltar', country: 'United Kingdom', lng: -5.3453, lat: 36.1408, population: '≈ 1,200', period: 'c. 1920' },
+      { name: 'Venice', country: 'Italy', lng: 12.3155, lat: 45.4408, population: '≈ 1,200', period: 'c. 1910' },
+      { name: 'Haifa', country: 'Palestine', lng: 34.9896, lat: 32.7940, population: '≈ 1,600', period: 'c. 1930' },
+      { name: 'Cagliari', country: 'Italy', lng: 9.1217, lat: 39.2238, population: '≈ 900', period: 'c. 1910' }
+    ];
+
+    const map = new maplibregl.Map({
+      container: 'map',
+      style: 'https://demotiles.maplibre.org/style.json',
+      center: [15, 36],
+      zoom: 4.8
+    });
+
+    const popups = [];
+
+    cities.forEach((city, index) => {
+      const popup = new maplibregl.Popup({ offset: 20 })
+        .setHTML(`
+          <strong>${city.name}</strong><br />
+          ${city.country}<br />
+          Jewish population: ${city.population}<br />
+          ${city.period}
+        `);
+
+      new maplibregl.Marker({ color: '#b25f2f' })
+        .setLngLat([city.lng, city.lat])
+        .setPopup(popup)
+        .addTo(map);
+
+      popups.push(popup);
+      addCityListItem(city, index);
+    });
+
+    function addCityListItem(city, index) {
+      const list = document.getElementById('city-list');
+      const item = document.createElement('li');
+      item.className = 'city-item';
+      item.tabIndex = 0;
+      item.innerHTML = `
+        <p class="city-item-title">${city.name}</p>
+        <div class="city-item-meta">
+          <span>${city.country}</span>
+          <span>Jewish population: ${city.population}</span>
+          <span>${city.period}</span>
+        </div>
+      `;
+
+      item.addEventListener('click', () => flyToCity(city, index));
+      item.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          flyToCity(city, index);
+        }
+      });
+
+      list.appendChild(item);
+    }
+
+    function flyToCity(city, index) {
+      map.flyTo({
+        center: [city.lng, city.lat],
+        zoom: 8,
+        speed: 0.9,
+        curve: 1
+      });
+      popups[index].addTo(map);
+    }
+
+    const tableBody = document.getElementById('table-body');
+    cities.forEach(city => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${city.name}</td>
+        <td>${city.country}</td>
+        <td>${city.population}</td>
+        <td>${city.period}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+  </script>
 </body>
 </html></content>
 <parameter name="filePath">/Users/valentinafisicaro/Desktop/Workspace/CriticalGIS-Project/index.html

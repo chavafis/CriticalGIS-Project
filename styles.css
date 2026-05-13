@@ -1,0 +1,192 @@
+/* Critical GIS Project site styling */
+:root {
+  color-scheme: light;
+  color: #1a1a1a;
+  background: #f7f4ee;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.7;
+  font-size: 1rem;
+  scroll-behavior: smooth;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-padding-top: 5rem;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+.site-header {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 2rem;
+}
+.brand {
+  font-size: clamp(2.3rem, 4vw, 4.4rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  margin: 0 0 1rem;
+}
+.eyebrow {
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+  color: #6c5c4a;
+}
+.lede {
+  max-width: 48rem;
+  margin: 0 0 1.75rem;
+  font-size: 1.05rem;
+  color: #333;
+}
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.toc a {
+  text-decoration: none;
+  color: #1a1a1a;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.toc a:hover,
+.toc a:focus-visible {
+  border-color: #1a1a1a;
+}
+.section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+.section + .section {
+  border-top: 1px solid #ddd5c8;
+}
+.section h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.05;
+}
+.section p {
+  max-width: 56rem;
+  margin: 0 0 1rem;
+  color: #3b3225;
+}
+.section-split {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .section-split {
+    grid-template-columns: 1fr;
+  }
+}
+.map-panel {
+  min-height: 680px;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 28px 80px rgba(32, 32, 32, 0.08);
+}
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 680px;
+}
+.side-panel {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+.panel-inner {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #ece3d8;
+  box-shadow: 0 18px 42px rgba(30, 30, 30, 0.08);
+}
+.panel-inner h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+}
+.panel-inner p {
+  margin: 0 0 1.25rem;
+  color: #4d4337;
+}
+.city-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.city-item {
+  border-top: 1px solid #eee5d8;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+.city-item:first-child {
+  border-top: none;
+}
+.city-item:hover,
+.city-item:focus-visible {
+  background: #faf6f2;
+}
+.city-item-title {
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+}
+.city-item-meta {
+  margin: 0;
+  display: grid;
+  gap: 0.25rem;
+  color: #66594b;
+  font-size: 0.95rem;
+}
+.city-item-meta span {
+  display: inline-block;
+}
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.stats-table th,
+.stats-table td {
+  text-align: left;
+  padding: 0.85rem 0.75rem;
+  border-bottom: 1px solid #ece3d8;
+}
+.stats-table th {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.stats-table td {
+  color: #4b3e31;
+}
+.stats-table tr:last-child td {
+  border-bottom: none;
+}
+.footer {
+  padding: 2rem 1.5rem 3rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  color: #6d5d50;
+  font-size: 0.95rem;
+}
+.footer a {
+  color: #1a1a1a;
+}
+@media (max-width: 680px) {
+  .panel-inner {
+    padding: 1.5rem;
+  }
+}

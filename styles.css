@@ -1,9 +1,9 @@
 /* Critical GIS Project site styling */
 :root {
-  color-scheme: light;
-  color: #1a1a1a;
-  background: #f7f4ee;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color-scheme: dark;
+  color: #c0e7ba;
+  background: #065f1d;
+  font-family: 'Times New Roman', Times, serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.7;
   font-size: 1rem;
   scroll-behavior: smooth;
@@ -17,6 +17,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  background: #065f1d;
+  color: #c0e7ba;
 }
 img {
   max-width: 100%;
@@ -32,19 +34,20 @@ img {
   font-weight: 700;
   letter-spacing: -0.05em;
   margin: 0 0 1rem;
+  color: #f4ebd2;
 }
 .eyebrow {
   margin: 0 0 1rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.82rem;
-  color: #6c5c4a;
+  color: #d3c9b1;
 }
 .lede {
   max-width: 48rem;
   margin: 0 0 1.75rem;
   font-size: 1.05rem;
-  color: #333;
+  color: #f4ebd2;
 }
 .toc {
   display: flex;
@@ -55,18 +58,19 @@ img {
 }
 .toc a {
   text-decoration: none;
-  color: #1a1a1a;
+  color: #f8efdb;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
 }
 .toc a:hover,
 .toc a:focus-visible {
-  border-color: #1a1a1a;
+  border-color: #f8efdb;
 }
 .section {
   max-width: 1080px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
+  color: #eedfbc;
 }
 .section + .section {
   border-top: 1px solid #ddd5c8;
@@ -79,7 +83,7 @@ img {
 .section p {
   max-width: 56rem;
   margin: 0 0 1rem;
-  color: #3b3225;
+  color: #eadfbe;
 }
 .section-split {
   display: grid;
@@ -109,19 +113,20 @@ img {
   align-self: start;
 }
 .panel-inner {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.08);
   padding: 2rem;
   border-radius: 1rem;
-  border: 1px solid #ece3d8;
-  box-shadow: 0 18px 42px rgba(30, 30, 30, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
 }
 .panel-inner h3 {
   margin: 0 0 0.75rem;
   font-size: 1.25rem;
+  color: #f4ebd2;
 }
 .panel-inner p {
   margin: 0 0 1.25rem;
-  color: #4d4337;
+  color: #e6d9bb;
 }
 .city-list {
   list-style: none;
@@ -138,17 +143,18 @@ img {
 }
 .city-item:hover,
 .city-item:focus-visible {
-  background: #faf6f2;
+  background: rgba(255, 255, 255, 0.08);
 }
 .city-item-title {
   margin: 0 0 0.3rem;
   font-weight: 600;
+  color: #f7eac8;
 }
 .city-item-meta {
   margin: 0;
   display: grid;
   gap: 0.25rem;
-  color: #66594b;
+  color: #e3d7b6;
   font-size: 0.95rem;
 }
 .city-item-meta span {
@@ -163,14 +169,14 @@ img {
 .stats-table td {
   text-align: left;
   padding: 0.85rem 0.75rem;
-  border-bottom: 1px solid #ece3d8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .stats-table th {
   font-weight: 700;
-  color: #1a1a1a;
+  color: #f7e8c7;
 }
 .stats-table td {
-  color: #4b3e31;
+  color: #e6d9b2;
 }
 .stats-table tr:last-child td {
   border-bottom: none;
